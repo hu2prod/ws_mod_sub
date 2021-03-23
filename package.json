@@ -1,0 +1,21 @@
+{
+  "name": "ws_mod_sub",
+  "version": "1.0.0",
+  "description": "pub sub modification",
+  "main": "index.js",
+  "scripts": {
+    "install": "iced -o lib -c src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hu2prod/ws_mod_sub.git"
+  },
+  "keywords": [],
+  "author": "hu2prod",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hu2prod/ws_mod_sub/issues"
+  },
+  "homepage": "https://github.com/hu2prod/ws_mod_sub#readme"
+}
