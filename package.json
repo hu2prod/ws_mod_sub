@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/hu2prod/ws_mod_sub/issues"
   },
-  "homepage": "https://github.com/hu2prod/ws_mod_sub#readme"
+  "homepage": "https://github.com/hu2prod/ws_mod_sub#readme",
+  "dependencies": {
+    "iced-coffee-script": "^108.0.14"
+  }
 }
