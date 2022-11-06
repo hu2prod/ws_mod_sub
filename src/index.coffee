@@ -2,6 +2,7 @@
 module.exports = (ws, wsrs)->
   ws.__sub_list = []
   ws.__sub_uid = 0
+  ws.sub_retry ?= 10
   ws.sub = (opt, handler)->
     sub_id = ws.__sub_uid++
     opt.sub.sub_id = sub_id
@@ -16,6 +17,7 @@ module.exports = (ws, wsrs)->
       wsrs.request clone(opt.sub), (err, data)->
         perr err if err
         opt.on_sub? err, data
+      , {retry : ws.sub_retry}
     
     ()->
       ws.unsub opt, handler
@@ -24,11 +26,15 @@ module.exports = (ws, wsrs)->
     ws.off "data", opt.handler
     
     ws.__sub_list.remove opt
-    wsrs.request clone(opt.unsub), (err)->perr err if err
+    wsrs.request clone(opt.unsub), ((err)->perr err if err), {retry : ws.sub_retry}
     return
   
   ws.on "reconnect", ()->
     for opt in ws.__sub_list
-      ws.send opt.sub
+      do (opt)->
+        wsrs.request clone(opt.sub), (err, data)->
+          perr err if err
+          opt.on_sub? err, data
+        , {retry : ws.sub_retry}
     return
   return
