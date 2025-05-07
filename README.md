@@ -5,9 +5,10 @@ wsrs = new Wsrs ws
 ws_mod_sub ws, wsrs
 
 switch_key = "some_ep"
-ws.sub {
+loc_opt = {
   sub   : obj_set {switch : "#{switch_key}_sub"}, opt
   unsub : obj_set {switch : "#{switch_key}_unsub"}, opt
   switch: "#{switch_key}_stream"
 }
+ws.sub loc_opt, (data)->
 ```
