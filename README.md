@@ -6,8 +6,8 @@ ws_mod_sub ws, wsrs
 
 switch_key = "some_ep"
 loc_opt = {
-  sub   : obj_set {switch : "#{switch_key}_sub"}, opt
-  unsub : obj_set {switch : "#{switch_key}_unsub"}, opt
+  sub   : {switch : "#{switch_key}_sub"}
+  unsub : {switch : "#{switch_key}_unsub"}
   switch: "#{switch_key}_stream"
 }
 ws.sub loc_opt, (data)->
